@@ -29,7 +29,7 @@ npm i Quora-profile-scraper
 ```js
 const quora = require('Quora-profile-scraper');
 
-quora.fetchUser('https://www.quora.com/profile/James-Altucher?q=j').then(console.log);
+quora.fetchUser('https://www.quora.com/profile/James-Altucher').then(console.log);
 
 // {
 //     name: 'James Altucher',
