@@ -1,44 +1,30 @@
 {
-  "name": "soundcloud-scraper",
-  "version": "3.0.1",
-  "description": "Get resource data (songs, playlists, etc.) from a SoundCloud URL",
+  "name": "quora-scraper",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "puppeteer": "^5.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Androz2091/soundcloud-scraper.git"
-  },
-  "author": "Androz2091 <androz2091@gmail.com>",
-  "license": "MIT",
-  "types": "./typings/index.d.ts",
-  "exports": {
-    ".": [
-      {
-        "require": "./index.js",
-        "import": "./esm/index.mjs"
-      },
-      "./index.js"
-    ],
-    "./esm": "./esm/index.mjs"
-  },
-  "dependencies": {
-    "jsdom": "^16.4.0",
-    "node-fetch": "^2.6.0"
-  },
-  "bugs": {
-    "url": "https://github.com/Androz2091/soundcloud-scraper/issues"
-  },
-  "homepage": "https://github.com/Androz2091/soundcloud-scraper#readme",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "cd test && node index.js"
+    "url": "git+https://github.com/SimonLeclere/Quora-Scraper.git"
   },
   "keywords": [
-    "soundcloud",
-    "soundcloud-downloader",
-    "soundcloud-scraper",
-    "soundcloud-song-downloader",
-    "soundcloud-api"
-  ]
+    "Quora",
+    "scraper",
+    "quora-scraper",
+    "scraper-quora"
+  ],
+  "author": "Simon Leclere",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimonLeclere/Quora-Scraper/issues"
+  },
+  "homepage": "https://github.com/SimonLeclere/Quora-Scraper#readme"
 }
