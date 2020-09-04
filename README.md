@@ -16,6 +16,8 @@
 
 A small scraper to get information about a profile on Quora. Use puppeteer.
 
+https://www.npmjs.com/package/quora-profile-scraper
+
 ## Install 
 
 ```sh
