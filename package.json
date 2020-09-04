@@ -25,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/SimonLeclere/QuoraScraper/issues"
   },
-  "homepage": "https://github.com/SimonLeclere/QuoraScraper#readme"
+  "homepage": "https://github.com/SimonLeclere/QuoraScraper#readme",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
