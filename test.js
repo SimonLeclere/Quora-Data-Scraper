@@ -1,6 +1,6 @@
 const quora = require('./index');
 
-quora.fetchUser('https://www.quora.com/profile/James-Altucher?q=j').then(console.log);
+quora.fetchUser('https://www.quora.com/profile/James-Altucher').then(console.log);
 
 // {
 //     name: 'James Altucher',

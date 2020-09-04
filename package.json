@@ -1,6 +1,6 @@
 {
   "name": "quora-profile-scraper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "dependencies": {
@@ -26,5 +26,7 @@
     "url": "https://github.com/SimonLeclere/QuoraScraper/issues"
   },
   "homepage": "https://github.com/SimonLeclere/QuoraScraper#readme",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

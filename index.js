@@ -6,16 +6,21 @@ exports.fetchUser = async (url) => {
   const page = await browser.newPage();
 
   // 2 - Naviguer jusqu'à l'URL cible
-  await page.goto(url);
+  await page.goto(url).catch(error => {
+    throw new Error('Invalid URL');
+  })
+
+  const title = await page.title();
+  if(title === 'Error 404 - Quora') throw new Error('Invalid URL');
 
   if (await page.$('.qu-px--large > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)') !== null) {
     await page.click('.qu-px--large > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)');
-    await page.waitFor(1000);
+    await page.waitFor(500);
   } 
 
   if (await page.$('.czFyoi') !== null) {
     await page.click('.czFyoi');
-    await page.waitFor(1000);
+    await page.waitFor(500);
   } 
 
   // 3 - Récupérer les données
