@@ -12,8 +12,6 @@
   </a>
 </p>
 
-### 🏠 [Homepage](https://github.com/SimonLeclere/Quora-profile-scraper#readme)
-
 A small scraper to get information about a profile on Quora. Use node-fetch and cheerio.
 
 https://www.npmjs.com/package/quora-profile-scraper
