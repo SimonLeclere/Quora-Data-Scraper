@@ -1,46 +1,73 @@
-const puppeteer = require('puppeteer');
+const fetch = require('node-fetch');
+const { load } = require('cheerio');
 
-exports.fetchUser = async (url) => {
-  // 1 - Créer une instance de navigateur
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
+exports.fetchUser = async (url, options) => {
 
-  // 2 - Naviguer jusqu'à l'URL cible
-  await page.goto(url).catch(error => {
-    throw new Error('Invalid URL');
-  })
+  // Vérification des paramètres optionnels
+  const raw = options && typeof options === 'object' && options.raw && typeof options.raw === 'boolean' ? options.raw : false;
 
-  const title = await page.title();
-  if(title === 'Error 404 - Quora') throw new Error('Invalid URL');
+  // Récupération du contenu de la page web
+  const req = await fetch(url);
+  const html = await req.text();
 
-  if (await page.$('.qu-px--large > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)') !== null) {
-    await page.click('.qu-px--large > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)');
-    await page.waitFor(500);
-  } 
+  const $ = load(html);
 
-  if (await page.$('.czFyoi') !== null) {
-    await page.click('.czFyoi');
-    await page.waitFor(500);
-  } 
+  // Query pour la récupération des données de la page au format JSON
+  const query = 'window.ansFrontendGlobals.data.inlineQueryResults.results';
 
-  // 3 - Récupérer les données
-  const result = await page.evaluate(() => {
-    let name = document.querySelector('.q-text .qu-bold').innerText;
-    let description = document.querySelector('.q-text .qu-fontSize--large').innerText;
-    let biography = document.querySelector('.q-box .qu-mt--small').innerText;
-    let avatar = document.querySelector('.qu-px--large > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > img:nth-child(2)').getAttribute('src');
-    let knowledges = [...document.querySelectorAll('.qu-mt--small .q-box .qu-flex--auto .q-text .qu-color--gray_dark .qu-cursor--pointer')].map(e => e.innerText);
-    let spaces = [...document.querySelectorAll('.q-box .qu-pb--medium .qu-flex--auto .q-text .qu-color--gray_dark .qu-cursor--pointer')].map(e => e.innerText);
-    let followers = document.querySelector('div.q-click-wrapper:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)').innerText.replace(/ ?abonnés?| ?Followers?/, '');
-    let answers = document.querySelector('.qu-color--red').innerText.replace(/ ?Réponses?| ?Answers?/, '');
-    let questions = document.querySelector('div.qu-display--inline-block:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)').innerText.replace(/ ?questions?| ?Questions?/, '');
-    let shares = document.querySelector('div.q-click-wrapper:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)').innerText.replace(/ ?partages?| ?Shares?/, '');
-    let posts = document.querySelector('div.q-click-wrapper:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)').innerText.replace(/ ?publications?| ?Posts?/, '');
+  const scripts = $('script').filter(function () {
+    return ($(this).html().indexOf(query) > -1);
+  });
 
-    return { name, description, biography, avatar, knowledges, spaces, followers, answers, questions, shares, posts }
-  })
+  const script = $(scripts[2]).html();
+  const window = script.substring(script.indexOf(`${query}[`) + (query.length + 70));
+  const data = window.substring(0, window.indexOf('}";') + 2);
+  const json = JSON.parse(data.trim());
 
-  // 4 - Retourner les données (et fermer le navigateur)
-  browser.close()
-  return result
+  const { data: { user } } = JSON.parse(json);
+
+  // Si l'option raw vaut true, renvoyer les données brutes
+  if(raw) return user;
+
+  // Analyse des données
+  const biography = JSON.parse(user.description).sections.map(({ spans }) => {
+    return spans.map((span) => span.text).join('');
+  }).join('\n');
+
+  const knowledges = user.expertiseTopicsConnection.edges.map(({ node: topic }) => {
+    return {
+      name: topic.name,
+      icon: topic.photoUrl,
+      answers: topic.numPublicAnswersOfUser
+    };
+  });
+
+  const spaces = user.followingTribesConnection.edges.map(({ node: space }) => {
+    return {
+      name: JSON.parse(space.name).sections.map(({ spans }) => {
+        return spans[0].text;
+      })[0],
+      icon: space.iconUrl,
+      items: space.numItemsOfUser
+    };
+  });
+
+  // Retour des données formatées
+  return {
+    name: user.names[0].reverseOrder ? `${user.names[0].familyName} ${user.names[0].givenName}` : `${user.names[0].givenName} ${user.names[0].familyName}`,
+    description: user.profileCredential ? user.profileCredential.experience : undefined || null, // Use ?. operator when nodeJS v14 will be stable
+    biography: biography || null,
+    avatar: user.profileImageUrl || null,
+    knowledges: knowledges || null,
+    spaces: spaces || null,
+    followers: user.followerCount || null,
+    following: user.followingCount || null,
+    answers: user.numPublicAnswers || null,
+    questions: user.numProfileQuestions || null,
+    shares: user.quoraSharesCount || null,
+    posts: user.numTribePosts || null,
+    views: user.allTimePublicAnswerViews || null,
+    lastMonthViews: user.lastMonthPublicContentViews || null,
+    verified: user.isVerified || null,
+  };
 }
