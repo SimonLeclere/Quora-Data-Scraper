@@ -1,6 +1,6 @@
 {
   "name": "quora-profile-scraper",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "dependencies": {
@@ -22,7 +22,7 @@
     "scraper-quora"
   ],
   "author": "Simon Leclere",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SimonLeclere/QuoraScraper/issues"
   },

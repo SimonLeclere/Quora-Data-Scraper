@@ -1,35 +1,48 @@
 const quora = require('./index');
 
-quora.fetchUser('https://www.quora.com/profile/James-Altucher', { raw: false }).then(console.log);
+quora.fetchUser('https://fr.quora.com/profile/Simon-Leclere', { raw: false }).then(console.log); // second parameter is optional
 
 // {
-//     name: 'James Altucher',
-//     description: 'Author, entrepreneur, podcaster, wall street investor',
-//     biography: 'James Altucher is the author of the bestselling book Choose Yourself, editor at The Altucher Report and host of the popular podcast, The James Altucher Show, which takes you beyond business and entrepreneurship by exploring what it means to be human and achieve well-being in a world that is increasingly complicated.\n' +
-//       '\n' +
-//       'You can learn everything (probably too much) about him at The Altucher Confidential',
-//     avatar: 'https://qph.fs.quoracdn.net/main-thumb-288636-200-fhgkbzymvtxxzdwnhcyyahhktlfzazij.jpeg',
+//     name: 'Simon Leclere',
+//     description: "Touche à tout passionné d'informatique et de high-tech",
+//     biography: "Jeune développeur, j'adore bidouiller et tout essayer. Une fois j'ai démonté une imprimante, mes parents ont pas trop aimé. Bref maintenant que j'ai fini d'embêter mes proches je viens vous embêter sur Quora. Gare à vous !\n" +
+//       "Une hyperbole c'est pas pour boire de l'hypersoupe",
+//     avatar: 'https://qph.fs.quoracdn.net/main-thumb-1099370703-200-rtyydeuedcynznijnnemevsxwfspapzo.jpeg',
 //     knowledges: [
-//       'Life Advice',
-//       'Self-Improvement',
-//       'Career Advice',
-//       'Writing',
-//       'Business',
-//       'Psychology of Everyday Life',
-//       'Meaning of Life',
-//       'Podcast Production',
-//       'Human Memory'
+//       {
+//         name: 'Informatique',
+//         icon: 'https://qph.fs.quoracdn.net/main-thumb-t-2365810-100-bmxhhffzwrykfgvyslsuygjqirqckfpe.jpeg',
+//         answers: 3
+//       },
+//       {
+//         name: 'JavaScript (langage de programmation)',
+//         icon: 'https://qph.fs.quoracdn.net/main-thumb-t-2365787-100-etdzymypqakpjodoshxjdmdzmookmtzb.jpeg',
+//         answers: 0
+//       },
+//       {
+//         name: 'Langages de programmation',
+//         icon: 'https://qph.fs.quoracdn.net/main-thumb-t-2365696-100-eyzcdieyvqrecbkncuwmmputwczrexod.jpeg',
+//         answers: 0
+//       },
+//       {
+//         name: 'Français (langue)',
+//         icon: 'https://qph.fs.quoracdn.net/main-thumb-t-2365818-100-ylwoccgbktbvlzqdlutnuhhpwxhftgta.jpeg',
+//         answers: 0
+//       },
+//       {
+//         name: 'Start-ups des technologies',
+//         icon: 'https://qph.fs.quoracdn.net/main-thumb-t-2374951-100-ryfwjnoqpaynxascptuphqrnmygwhdyc.jpeg',
+//         answers: 0
+//       }
 //     ],
-//     spaces: [
-//       'The Altucher Confidential',
-//       "James Altucher's Posts",
-//       'Entrepreneurial Mindset',
-//       'The Road Not Taken...',
-//       'Growth Mindset Lab'
-//     ],
-//     followers: '282,189',
-//     answers: '969',
-//     questions: '370',
-//     shares: '11',
-//     posts: '917'
+//     spaces: [],
+//     followers: 8,
+//     following: 6,
+//     answers: 9,
+//     questions: null,
+//     shares: null,
+//     posts: null,
+//     views: 44788,
+//     lastMonthViews: 25205,
+//     verified: null
 // }
