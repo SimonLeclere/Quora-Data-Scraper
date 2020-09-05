@@ -19,7 +19,7 @@ https://www.npmjs.com/package/quora-profile-scraper
 ## Install 
 
 ```sh
-npm i Quora-profile-scraper
+npm i quora-profile-scraper
 ```
 
 ## Usage
