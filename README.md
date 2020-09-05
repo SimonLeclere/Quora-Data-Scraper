@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Quora-profile-scraper 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.3-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.4-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/SimonLeclere/Quora-profile-scraper#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
