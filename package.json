@@ -1,7 +1,7 @@
 {
-  "name": "quora-profile-scraper",
-  "version": "1.0.3",
-  "description": "",
+  "name": "quora-data-scraper",
+  "version": "1.2.0",
+  "description": "A small scraper to get information about a profile, a question or an answer on Quora. Use node-fetch and cheerio.",
   "main": "index.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SimonLeclere/QuoraScraper.git"
+    "url": "git+https://github.com/SimonLeclere/Quora-Data-Scraper.git"
   },
   "keywords": [
     "Quora",
@@ -24,7 +24,7 @@
   "author": "Simon Leclere",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SimonLeclere/QuoraScraper/issues"
+    "url": "https://github.com/SimonLeclere/Quora-Data-Scraper/issues"
   },
-  "homepage": "https://github.com/SimonLeclere/QuoraScraper#readme"
+  "homepage": "https://github.com/SimonLeclere/Quora-Data-Scraper#readme"
 }
