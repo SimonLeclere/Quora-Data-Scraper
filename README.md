@@ -125,6 +125,8 @@ quora.fetchQuestion('https://fr.quora.com/La-cam%C3%A9ra-frontale-d%C3%A9forme-t
 
 Allows, from a link to a Quora answer, to obtain information such as the number of views, the title of the question, the content of the question? The parameter { raw } is optional and must be a boolean. It allows you to obtain more complete data, but more difficult to use.
 
+⚠ Does not currently support markdown, images or links
+
 ```js
 const quora = require('quora');
 
