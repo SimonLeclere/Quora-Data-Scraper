@@ -14,7 +14,7 @@
 
 A small scraper to get information about a profile, a question or an answer on Quora. Use node-fetch and cheerio.
 
-https://www.npmjs.com/package/Quora-Data-Scraper
+https://www.npmjs.com/package/quora-data-scraper
 
 ## Install 
 
