@@ -30,7 +30,7 @@ Allows, from a link to a Quora profile, to obtain information such as the number
 
 
 ```js
-const quora = require('quora');
+const quora = require('quora-data-scraper');
 
 quora.fetchUser('https://fr.quora.com/profile/Simon-Leclere', { raw: false }).then(console.log); // second parameter is optional
 
@@ -87,7 +87,7 @@ quora.fetchUser('https://fr.quora.com/profile/Simon-Leclere', { raw: false }).th
 Allows, from a link to a Quora question, to obtain information such as the number of answers, the title of the question, the topics... The parameter { raw } is optional and must be a boolean. It allows you to obtain more complete data, but more difficult to use.
 
 ```js
-const quora = require('quora');
+const quora = require('quora-data-scraper');
 
 quora.fetchQuestion('https://fr.quora.com/La-cam%C3%A9ra-frontale-d%C3%A9forme-t-elle-le-visage', { raw: false }).then(console.log); // Second parameter is optional
 
@@ -128,7 +128,7 @@ Allows, from a link to a Quora answer, to obtain information such as the number 
 ⚠ Does not currently support markdown, images or links
 
 ```js
-const quora = require('quora');
+const quora = require('quora-data-scraper');
 
 quora.fetchAnswer('https://fr.quora.com/La-cam%C3%A9ra-frontale-d%C3%A9forme-t-elle-le-visage/answer/Simon-Leclere?ch=10&share=8cd864d7&srid=uz6vFe', { raw: false }).then(console.log); // Second parameter is optional
 
